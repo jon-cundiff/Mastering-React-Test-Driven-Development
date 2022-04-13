@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import { Appointment } from "./Appointment";
-
-const appointmentTimeOfDay = (startsAt) => {
-    const [h, m] = new Date(startsAt).toTimeString().split(":");
-    return `${h}:${m}`;
-};
+import { appointmentTimeOfDay } from "./appointmentTimeOfDay";
 
 export const AppointmentsDayView = ({ appointments }) => {
     const [selectedAppointment, setSelectedAppointment] = useState(0);

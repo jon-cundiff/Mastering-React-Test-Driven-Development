@@ -55,4 +55,12 @@ describe("Appointment", () => {
         render(<Appointment customer={customer} />);
         expect(container.textContent).toMatch("Thicker hair");
     });
+
+    it("renders the appointment time in a heading", () => {
+        const today = new Date();
+        const startsAt = today.setHours(12, 0);
+
+        render(<Appointment startsAt={startsAt} customer={{}} />);
+        expect(container.querySelector("h1").textContent).toEqual("12:00");
+    });
 });

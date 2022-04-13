@@ -1,9 +1,12 @@
 import React from "react";
+import { appointmentTimeOfDay } from "./appointmentTimeOfDay";
 
 export const Appointment = ({
+    startsAt,
     customer: { firstName, lastName, phoneNumber, stylist, service, notes },
 }) => (
     <div>
+        <h1>{appointmentTimeOfDay(startsAt)}</h1>
         <table>
             <tbody>
                 <tr>
