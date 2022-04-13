@@ -23,4 +23,36 @@ describe("Appointment", () => {
         render(<Appointment customer={customer} />);
         expect(container.textContent).toMatch("Jordan");
     });
+
+    it("renders the customer last name", () => {
+        customer = { lastName: "Jones" };
+        render(<Appointment customer={customer} />);
+        expect(container.textContent).toMatch("Jones");
+    });
+
+    it("renders the customer's phone number", () => {
+        customer = { phoneNumber: "132-321-1234" };
+        render(<Appointment customer={customer} />);
+        expect(container.textContent).toMatch("132-321-1234");
+    });
+
+    it("renders the stylist's name", () => {
+        customer = { stylist: "Jane Doe" };
+        render(<Appointment customer={customer} />);
+        expect(container.textContent).toMatch("Jane Doe");
+    });
+
+    it("renders the salon service", () => {
+        customer = { service: "Haircut" };
+        render(<Appointment customer={customer} />);
+        expect(container.textContent).toMatch("Haircut");
+    });
+
+    it("renders appointment notes", () => {
+        customer = {
+            notes: "Thicker hair",
+        };
+        render(<Appointment customer={customer} />);
+        expect(container.textContent).toMatch("Thicker hair");
+    });
 });
