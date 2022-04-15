@@ -6,6 +6,9 @@ describe("CustomerForm", () => {
     let render, container;
 
     const form = (id) => container.querySelector(`form[id="${id}"]`);
+    const labelFor = (formElement) =>
+        container.querySelector(`label[for="${formElement}"]`);
+    const firstNameField = () => form("customer").elements.firstName;
 
     const expectToBeInputFieldOfTypeText = (formElement) => {
         expect(formElement).not.toBeNull();
@@ -24,7 +27,22 @@ describe("CustomerForm", () => {
 
     it("renders the first name field as a text box", () => {
         render(<CustomerForm />);
-        const field = form("customer").elements.firstName;
-        expectToBeInputFieldOfTypeText(field);
+        expectToBeInputFieldOfTypeText(firstNameField());
+    });
+
+    it("includes the existing value for the first name", () => {
+        render(<CustomerForm firstName="Ashley" />);
+        expect(firstNameField().value).toEqual("Ashley");
+    });
+
+    it("renders a label for the first name field", () => {
+        render(<CustomerForm />);
+        expect(labelFor("firstName")).not.toBeNull();
+        expect(labelFor("firstName").textContent).toEqual("First name");
+    });
+
+    it("assigns an id that matches the label id to the first name field", () => {
+        render(<CustomerForm />);
+        expect(firstNameField().id).toEqual("firstName");
     });
 });
