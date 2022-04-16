@@ -6,6 +6,19 @@ describe("Appointment", () => {
     let container;
     let customer;
 
+    let consoleSpy;
+    beforeAll(() => {
+        consoleSpy = jest
+            .spyOn(global.console, "error")
+            .mockImplementation((message) => {
+                if (!message.includes("ReactDOM.render")) {
+                    global.console.error(message);
+                }
+            });
+    });
+
+    afterAll(() => consoleSpy.mockRestore());
+
     beforeEach(() => {
         container = document.createElement("div");
     });
