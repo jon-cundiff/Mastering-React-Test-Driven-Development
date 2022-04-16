@@ -105,4 +105,13 @@ describe("CustomerForm", () => {
         itSavesExistingValueWhenSubmitted("lastName", "lastName");
         itSavesNewValueWhenSubmitted("lastName", "anotherLastName");
     });
+
+    describe("phone number field", () => {
+        itRendersAsATextBox("phoneNumber");
+        itIncludesTheExistingValue("phoneNumber");
+        itRendersALabel("phoneNumber", "Phone number");
+        itAssignsAnIdThatMatchTheLabelId("phoneNumber");
+        itSavesExistingValueWhenSubmitted("phoneNumber", "phoneNumber");
+        itSavesNewValueWhenSubmitted("phoneNumber", "anotherPhoneNumber");
+    });
 });

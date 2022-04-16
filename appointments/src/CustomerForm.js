@@ -1,7 +1,16 @@
 import React, { useState } from "react";
 
-export const CustomerForm = ({ firstName, lastName, onSubmit }) => {
-    const [customer, setCustomer] = useState({ firstName, lastName });
+export const CustomerForm = ({
+    firstName,
+    lastName,
+    phoneNumber,
+    onSubmit,
+}) => {
+    const [customer, setCustomer] = useState({
+        firstName,
+        lastName,
+        phoneNumber,
+    });
 
     const handleTextChange = ({ target }) => {
         setCustomer({
@@ -25,6 +34,14 @@ export const CustomerForm = ({ firstName, lastName, onSubmit }) => {
                 id="lastName"
                 name="lastName"
                 value={lastName}
+                onChange={handleTextChange}
+            />
+            <label htmlFor="phoneNumber">Phone number</label>
+            <input
+                type="text"
+                id="phoneNumber"
+                name="phoneNumber"
+                value={phoneNumber}
                 onChange={handleTextChange}
             />
         </form>
