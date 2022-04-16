@@ -17,10 +17,10 @@ describe("CustomerForm", () => {
         expect(formElement.type).toEqual("text");
     };
 
-    const itRendersAsATextBox = () => {
+    const itRendersAsATextBox = (fieldName) => {
         it("renders as a text box", () => {
             render(<CustomerForm />);
-            expectToBeInputFieldOfTypeText(field("firstName"));
+            expectToBeInputFieldOfTypeText(field(fieldName));
         });
     };
 
@@ -73,7 +73,7 @@ describe("CustomerForm", () => {
                 />
             );
             await ReactTestUtils.Simulate.change(field(fieldName), {
-                target: { value },
+                target: { value, name: fieldName },
             });
             await ReactTestUtils.Simulate.submit(form("customer"));
         });
@@ -89,11 +89,20 @@ describe("CustomerForm", () => {
     });
 
     describe("first name field", () => {
-        itRendersAsATextBox();
+        itRendersAsATextBox("firstName");
         itIncludesTheExistingValue("firstName");
         itRendersALabel("firstName", "First name");
         itAssignsAnIdThatMatchTheLabelId("firstName");
         itSavesExistingValueWhenSubmitted("firstName", "firstName");
         itSavesNewValueWhenSubmitted("firstName", "anotherFirstName");
+    });
+
+    describe("last name field", () => {
+        itRendersAsATextBox("lastName");
+        itIncludesTheExistingValue("lastName");
+        itRendersALabel("lastName", "Last name");
+        itAssignsAnIdThatMatchTheLabelId("lastName");
+        itSavesExistingValueWhenSubmitted("lastName", "lastName");
+        itSavesNewValueWhenSubmitted("lastName", "anotherLastName");
     });
 });
