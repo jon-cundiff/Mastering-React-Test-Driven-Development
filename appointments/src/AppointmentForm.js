@@ -1,11 +1,12 @@
 import React from "react";
 
-export const AppointmentForm = ({ selectableServices }) => (
+export const AppointmentForm = ({ selectableServices, service }) => (
     <form id="appointment">
-        <select name="service">
+        <label htmlFor="service">Service</label>
+        <select name="service" value={service} readOnly>
             <option />
-            {selectableServices.map((service) => (
-                <option key={service}>{service}</option>
+            {selectableServices.map((s) => (
+                <option key={s}>{s}</option>
             ))}
         </select>
     </form>
