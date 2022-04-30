@@ -9,12 +9,20 @@ describe("AppointmentForm", () => {
         ({ render, container } = createContainer());
     });
 
-    const form = (id) => {
-        container.querySelector(`form[id="${id}"]`);
-    };
+    const form = (id) => container.querySelector(`form[id="${id}"]`);
 
     it("renders a form", () => {
         render(<AppointmentForm />);
         expect(form("appointment")).not.toBeNull();
+    });
+
+    describe("service field", () => {
+        it("renders as a select box", () => {
+            render(<AppointmentForm />);
+            expect(form("appointment").elements.service).not.toBeNull();
+            expect(form("appointment").elements.service.tagName).toEqual(
+                "SELECT"
+            );
+        });
     });
 });
