@@ -5,19 +5,6 @@ import { AppointmentForm } from "../src/AppointmentForm";
 describe("AppointmentForm", () => {
     let render, container;
 
-    let consoleSpy;
-    beforeAll(() => {
-        consoleSpy = jest
-            .spyOn(global.console, "error")
-            .mockImplementation((message) => {
-                if (!message.includes("ReactDOM.render")) {
-                    global.console.error(message);
-                }
-            });
-    });
-
-    afterAll(() => consoleSpy.mockRestore());
-
     beforeEach(() => {
         ({ render, container } = createContainer());
     });

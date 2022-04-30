@@ -5,18 +5,6 @@ import { CustomerForm } from "../src/CustomerForm";
 
 describe("CustomerForm", () => {
     let render, container;
-    let consoleSpy;
-    beforeAll(() => {
-        consoleSpy = jest
-            .spyOn(global.console, "error")
-            .mockImplementation((message) => {
-                if (!message.includes("ReactDOM.render")) {
-                    global.console.error(message);
-                }
-            });
-    });
-
-    afterAll(() => consoleSpy.mockRestore());
 
     const form = (id) => container.querySelector(`form[id="${id}"]`);
     const labelFor = (formElement) =>

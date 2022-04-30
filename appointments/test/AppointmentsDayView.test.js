@@ -6,19 +6,6 @@ import { AppointmentsDayView } from "../src/AppointmentsDayView";
 describe("AppointmentDaysView", () => {
     let container;
 
-    let consoleSpy;
-    beforeAll(() => {
-        consoleSpy = jest
-            .spyOn(global.console, "error")
-            .mockImplementation((message) => {
-                if (!message.includes("ReactDOM.render")) {
-                    global.console.error(message);
-                }
-            });
-    });
-
-    afterAll(() => consoleSpy.mockRestore());
-
     const today = new Date();
     const appointments = [
         { startsAt: today.setHours(12, 0), customer: { firstName: "Ashley" } },
